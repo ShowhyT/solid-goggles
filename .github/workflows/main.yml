@@ -8,8 +8,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Print secret
-      run: echo ${{ secrets.TOKEN }}
 
     - name: Setup Python
       uses: actions/setup-python@v2
