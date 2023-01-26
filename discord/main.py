@@ -23,7 +23,8 @@ async def on_ready():
     print(f"{len(bot.guilds)} servers, {len(bot.users)} users \nБот запущен!" )
 
 async def load():
-    for filename in os.listdir("/workspace/solid-goggles/discord/cogs"):
+    path_to_file = os.path.join(os.getenv("GITHUB_WORKSPACE"), "discord", "cogs")
+    for filename in os.listdir(path_to_file):
         if filename.endswith(".py"):
             await bot.load_extension(f"cogs.{filename[:-3]}")
 
