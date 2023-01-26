@@ -1,0 +1,21 @@
+name: Python Application
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.11
+        
+    - name: Install dependencies
+      run: pip install -r discord/requirements.txt
+      
+    - name: Run main.py
+      run: python discord/main.py
