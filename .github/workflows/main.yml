@@ -18,5 +18,7 @@ jobs:
       run: pip install -r discord/requirements.txt
         
     - name: Run main.py
-      run: python discord/main.py ${{ secrets.TOKEN }}
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
+      run: python discord/main.py
 
