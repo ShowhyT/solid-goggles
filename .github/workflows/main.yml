@@ -16,6 +16,7 @@ jobs:
         
     - name: Install dependencies
       run: pip install -r discord/requirements.txt
+      
     - name: Run the bot
       env:
         TOKEN: ${{ secrets.TOKEN }}
