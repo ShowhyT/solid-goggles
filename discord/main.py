@@ -21,7 +21,7 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 @bot.event
 async def on_ready():
     print(f"Logged in as {bot.user}")
-    #await load()
+    await load()
     await bot.tree.sync()
     print(f"{len(bot.guilds)} servers, {len(bot.users)} users \nБот запущен!" )
 
