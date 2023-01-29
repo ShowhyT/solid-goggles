@@ -36,5 +36,13 @@ async def restart(inter:discord.Interaction):
     await asyncio.sleep(5)
     await bot.reload_extension("cogs.commands")
 
+
+@bot.tree.command(name="shutdown", description="Экстренное выключение бота")
+@commands.has_permissions(administrator=True)
+async def restart(inter:discord.Interaction):
+    await inter.response.send_message(f"Бот выключается Через 5 секунд")
+    await asyncio.sleep(5)
+    await exit()
+
     
 bot.run(os.getenv("TOKEN"))
