@@ -1,0 +1,26 @@
+name: Deploy to Render
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  RENDER_PROJECT_NAME: showhy-solid
+  RENDER_APP_NAME: showhy-solid
+  RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Deploy to Render
+      uses: render-examples/github-actions-deploy@v1
+      with:
+        project-name: ${{ env.RENDER_PROJECT_NAME }}
+        app-name: ${{ env.RENDER_APP_NAME }}
+        api-key: ${{ env.RENDER_API_KEY }}
