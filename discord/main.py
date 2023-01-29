@@ -19,16 +19,16 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 @bot.event
 async def on_ready():
     print(f"Logged in as {bot.user}")
-    await load()
+    #await load()
     await bot.tree.sync()
     print(f"{len(bot.guilds)} servers, {len(bot.users)} users \nБот запущен!" )
 
-async def load():
+"""async def load():
     path_to_file = os.path.join(os.getenv("TOKEN"))
     for filename in os.listdir(path_to_file):
         if filename.endswith(".py"):
             await bot.load_extension(f"cogs.{filename[:-3]}")
-
+"""
 @bot.tree.command(name="reboot", description="Перезапуск бота")
 @commands.has_permissions(administrator=True)
 async def restart(inter:discord.Interaction):
