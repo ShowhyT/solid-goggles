@@ -10,13 +10,14 @@ version: 2.0
 
 # The language and version of the runtime
 language: python
-python_version: 3.8
+python_version: 3.11
 
 # The command to start the application
 commands:
+  env:
+  TOKEN: ${{ secrets.TOKEN }}
+  
   start: |
     pip install -r requirements.txt
     export TOKEN="${{ secrets.TOKEN }}"
     python discord/main.py
-env:
-  TOKEN: ${{ secrets.TOKEN }}
