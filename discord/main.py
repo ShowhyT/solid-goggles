@@ -26,7 +26,7 @@ async def on_ready():
     print(f"{len(bot.guilds)} servers, {len(bot.users)} users \nБот запущен!" )
 
 async def load():
-    path_to_file = os.path.join("~/discord/cogs")
+    path_to_file = os.path.join("discord/cogs")
     for filename in os.listdir(path_to_file):
         if filename.endswith(".py"):
             await bot.load_extension(f"cogs.{filename[:-3]}")
