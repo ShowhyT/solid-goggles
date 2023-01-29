@@ -44,6 +44,14 @@ async def restart(inter:discord.Interaction):
 async def restart(inter:discord.Interaction):
     await inter.response.send_message(f"Бот выключается Через 5 секунд")
     await asyncio.sleep(5)
+    await print(4)
+    await asyncio.sleep(1)
+    await print(3)
+    await asyncio.sleep(1)
+    await print(2)
+    await asyncio.sleep(1)
+    await print(1)
+    await asyncio.sleep(1)
     exit()
 
     
