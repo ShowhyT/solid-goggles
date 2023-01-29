@@ -9,7 +9,9 @@ from discord import app_commands
 from dotenv import load_dotenv
 
 
-"""dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+"""
+Это для систем где есть файл .env
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 if os.path.exists(dotenv_path):
     load_dotenv(dotenv_path)    
 """
@@ -23,12 +25,12 @@ async def on_ready():
     await bot.tree.sync()
     print(f"{len(bot.guilds)} servers, {len(bot.users)} users \nБот запущен!" )
 
-"""async def load():
-    path_to_file = os.path.join(os.getenv("TOKEN"))
+async def load():
+    path_to_file = os.path.join(discord\cogs)
     for filename in os.listdir(path_to_file):
         if filename.endswith(".py"):
             await bot.load_extension(f"cogs.{filename[:-3]}")
-"""
+
 @bot.tree.command(name="reboot", description="Перезапуск бота")
 @commands.has_permissions(administrator=True)
 async def restart(inter:discord.Interaction):
