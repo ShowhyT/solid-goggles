@@ -44,7 +44,7 @@ async def restart(inter:discord.Interaction):
 async def restart(inter:discord.Interaction):
     await inter.response.send_message(f"Бот выключается Через 5 секунд")
     await asyncio.sleep(5)
-    await exit()
+    exit()
 
     
 bot.run(os.getenv("TOKEN"))
