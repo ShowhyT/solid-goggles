@@ -1,23 +1,23 @@
 import discord
 import os
-import dotenv
 import asyncio
 
 
 from discord.ext import commands
-from discord import app_commands
 from dotenv import load_dotenv
 
 
 """
-Это для систем где есть файл .env
-dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
-if os.path.exists(dotenv_path):
-    load_dotenv(dotenv_path)    
+Это для систем где есть файл .env Если на хостинге то закоментируем его
 """
+# dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+# if os.path.exists(dotenv_path):
+#     load_dotenv(dotenv_path)
 
+
+# Присваиваем переменную боту
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
-
+# Это @bot.event. Это главный запуск и проверка бота на работоспособность
 @bot.event
 async def on_ready():
     print(f"Logged in as {bot.user}")
@@ -25,36 +25,12 @@ async def on_ready():
     await load()
     await bot.tree.sync()
     print(f"{len(bot.guilds)} servers, {len(bot.users)} users \nБот запущен!" )
-
+# Метод load нужен для быстрой загрузки файлов из папки cogs
 async def load():
     path_to_file = os.path.join("cogs")
     for filename in os.listdir(path_to_file):
         if filename.endswith(".py"):
             await bot.load_extension(f"cogs.{filename[:-3]}")
 
-@bot.tree.command(name="reboot", description="Перезапуск бота")
-@commands.has_permissions(administrator=True)
-async def restart(inter:discord.Interaction):
-    await inter.response.send_message(f"Бот перезапускается Через 5 секунд")
-    await asyncio.sleep(5)
-    await bot.reload_extension("cogs.commands")
-
-
-@bot.tree.command(name="shutdown", description="Экстренное выключение бота")
-@commands.has_permissions(administrator=True)
-async def restart(inter:discord.Interaction):
-    await inter.response.send_message(f"Бот выключается Через 5 секунд")
-    print(5)
-    await asyncio.sleep(5)
-    print(4)
-    await asyncio.sleep(1)
-    print(3)
-    await asyncio.sleep(1)
-    print(2)
-    await asyncio.sleep(1)
-    print(1)
-    await asyncio.sleep(1)
-    exit()
-
-    
+# И запуск бота с использованием .env
 bot.run(os.getenv("TOKEN"))
