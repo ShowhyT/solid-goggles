@@ -1,0 +1,12 @@
+{
+  "build": {
+    "src": "discord/main.py"
+    "use": "@vercel/python"
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "discord/main.py"
+    }
+  ]
+}
