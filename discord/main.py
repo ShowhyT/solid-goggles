@@ -31,6 +31,9 @@ async def load():
     for filename in os.listdir(path_to_file):
         if filename.endswith(".py"):
             await bot.load_extension(f"cogs.{filename[:-3]}")
+ @tree.command(name="ping", description="Команда для проверки сервера")
+    async def google(inter:discord.Interaction):
+        await inter.response.send_message(f"Ping! `{int(self.bot.latency * 1000)}` ms ", ephemeral=True)
 
 # И запуск бота с использованием .env
 bot.run(os.getenv("TOKEN"))
