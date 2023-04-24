@@ -15,6 +15,7 @@ from discord.ext import commands
 #     load_dotenv(dotenv_path)
 
 
+
 # Присваиваем переменную боту
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 # Это @bot.event. Это главный запуск и проверка бота на работоспособность
