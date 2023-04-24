@@ -27,13 +27,10 @@ async def on_ready():
     print(f"{len(bot.guilds)} servers, {len(bot.users)} users \nБот запущен!" )
 # Метод load нужен для быстрой загрузки файлов из папки cogs
 async def load():
-    path_to_file = os.path.join("cogs")
+    path_to_file = os.path.join("/discord/cogs")
     for filename in os.listdir(path_to_file):
         if filename.endswith(".py"):
             await bot.load_extension(f"cogs.{filename[:-3]}")
- @tree.command(name="ping", description="Команда для проверки сервера")
-    async def google(inter:discord.Interaction):
-        await inter.response.send_message(f"Ping! `{int(self.bot.latency * 1000)}` ms ", ephemeral=True)
 
 # И запуск бота с использованием .env
 bot.run(os.getenv("TOKEN"))
